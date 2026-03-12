@@ -14,7 +14,7 @@ agent = create_agent(
 
 # for event in agent.stream(
 #   {"messages":[{"role": "user", "content": "What is the weather like in SF"}]},
-#   stream_mode="values"
+#   stream_mode="values" # message by message
 # ):
 #   messages = event["messages"]
 #   print(f"历史消息：{len(messages)}条")
@@ -24,7 +24,7 @@ agent = create_agent(
 
 for chunk in agent.stream(
   {"messages":[{"role": "user", "content": "What is the weather like in SF"}]},
-  stream_mode="messages"
+  stream_mode="messages" #token by token
 ):
   print(chunk[0].content, end='')
 # (AIMessageChunk(
