@@ -13,7 +13,7 @@ agent = create_agent(
   checkpointer=checkpointer
 )
 
-config = {"configurable": {"thread_id": "1"}}
+config = {"configurable": {"thread_id": "1"}} # 指定会话id
 
 # 第一轮问答
 
