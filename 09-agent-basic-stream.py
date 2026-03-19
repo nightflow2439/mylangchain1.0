@@ -12,21 +12,24 @@ agent = create_agent(
   tools=[get_weather]
 )
 
-# for event in agent.stream(
-#   {"messages":[{"role": "user", "content": "What is the weather like in SF"}]},
-#   stream_mode="values" # message by message
-# ):
-#   messages = event["messages"]
-#   print(f"历史消息：{len(messages)}条")
-#   # for message in messages:
-#   #   message.pretty_print()
-#   messages[-1].pretty_print()
-
-for chunk in agent.stream(
+for event in agent.stream(
   {"messages":[{"role": "user", "content": "What is the weather like in SF"}]},
-  stream_mode="messages" #token by token
+  stream_mode="values" # message by message
 ):
-  print(chunk[0].content, end='')
+  messages = event["messages"]
+  print(f"历史消息：{len(messages)}条")
+  # for message in messages:
+  #   message.pretty_print()
+  messages[-1].pretty_print()
+  print("-----")
+  for message in messages:
+    print(getattr(message, "id", None))
+
+# for chunk in agent.stream(
+#   {"messages":[{"role": "user", "content": "What is the weather like in SF"}]},
+#   stream_mode="messages" #token by token
+# ):
+#   print(chunk[0].content, end='')
 # (AIMessageChunk(
 # content='', 
 # additional_kwargs={}, 

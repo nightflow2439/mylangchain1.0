@@ -68,7 +68,7 @@ agent = create_agent(
   middleware=[
     HumanInTheLoopMiddleware(
       interrupt_on={
-        "get_person": True,
+        "get_person": True, # 所有决策都允许
         "get_person_information": {
           "allowed_decisions": ["approve", "reject"]
         }
